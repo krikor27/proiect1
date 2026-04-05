@@ -12,8 +12,8 @@
   <line>Command: /home/kriko/proiect pa/project-data/gigiquant/src/test /home/kriko/proiect pa/project-data/gigiquant/in/data11.in /home/kriko/proiect pa/project-data/gigiquant/out/data11.out</line>
 </preamble>
 
-<pid>1162</pid>
-<ppid>1115</ppid>
+<pid>2393</pid>
+<ppid>2369</ppid>
 <tool>memcheck</tool>
 
 <args>
@@ -38,7 +38,7 @@
 
 <status>
   <state>FINISHED</state>
-  <time>00:00:00:00.713 </time>
+  <time>00:00:00:00.848 </time>
 </status>
 
 <errorcounts>

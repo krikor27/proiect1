@@ -11,7 +11,7 @@ void addAtBeginning(Node** head, double v) {
 	*head = newNode;
 }
 
-void addAtEndt1(Node** head, double v) {
+void addAtEndt1(Node** head, double v,double *miu) {
     Node *aux = *head;
     Node *newNode = (Node*)malloc(sizeof(Node));
     if (newNode==NULL) 
@@ -27,7 +27,21 @@ void addAtEndt1(Node** head, double v) {
         while (aux->next != NULL) 
             aux = aux->next;
         aux->next = newNode;
-        newNode->randam=(newNode->v - aux->v)/newNode->v;
+        newNode->randam=(newNode->val - aux->val)/newNode->val;
+        (*miu)+=newNode->randam;
         newNode->next = NULL; 
     }
+}
+double volatilitate(Node* head,int N)
+{
+    int i;
+    double volat=0;
+    for(i=0;i<N;i++)
+    {
+        volat+=(head->val-head->randam)*(head->val-head->randam);
+        head=head->next;
+    }
+        volat/=N;
+    volat=sqrt(volat);
+    return volat;
 }

@@ -9,5 +9,6 @@ struct Elem* next;
 
 typedef struct Elem Node;
 
-addAtBeginning(Node** head, double v);
-addAtEnd(Node** head, double v);
+void addAtBeginning(Node** head, double v);
+void addAtEndt1(Node** head, double v,double *miu);
+double volatilitate(Node* head,int N);

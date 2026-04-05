@@ -1,0 +1,1 @@
+time=2026-04-05T21:51:21.042+03:00 level=ERROR msg="FATAL ERROR DETECTED! failed to read tests.json: open /home/kriko/proiect pa/project-data/gigiquant/src/tests.json: no such file or directory\n ABORTING!"
