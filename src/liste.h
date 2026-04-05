@@ -11,4 +11,5 @@ typedef struct Elem Node;
 
 void addAtBeginning(Node** head, double v);
 void addAtEndt1(Node** head, double v,double *miu);
-double volatilitate(Node* head,int N);
+double volatilitate(Node* head,int N,double miu);
+double trunchiere(double x);

@@ -7,11 +7,16 @@ void addAtBeginning(Node** head, double v) {
         exit(1);
     }
 	newNode->val = v;
+    newNode->randam=0.0;
 	newNode->next = *head;
 	*head = newNode;
 }
 
 void addAtEndt1(Node** head, double v,double *miu) {
+    if (*head == NULL) 
+        addAtBeginning(&*head, v);
+    else 
+    {
     Node *aux = *head;
     Node *newNode = (Node*)malloc(sizeof(Node));
     if (newNode==NULL) 
@@ -20,28 +25,28 @@ void addAtEndt1(Node** head, double v,double *miu) {
         exit(1);
     } 
     newNode->val = v; 
-
-    if (*head == NULL) 
-        addAtBeginning(&*head, v);
-    else {
         while (aux->next != NULL) 
             aux = aux->next;
         aux->next = newNode;
-        newNode->randam=(newNode->val - aux->val)/newNode->val;
+        newNode->randam=(newNode->val - aux->val)/aux->val;
         (*miu)+=newNode->randam;
         newNode->next = NULL; 
     }
 }
-double volatilitate(Node* head,int N)
+double volatilitate(Node* head,int N,double miu)
 {
     int i;
     double volat=0;
     for(i=0;i<N;i++)
     {
-        volat+=(head->val-head->randam)*(head->val-head->randam);
+        volat+=(head->randam-miu)*(head->randam-miu);
         head=head->next;
     }
         volat/=N;
     volat=sqrt(volat);
     return volat;
+}
+double trunchiere(double x)
+{
+    return ((long long)(x*1000.0)/1000.0);
 }
