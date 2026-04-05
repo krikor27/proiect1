@@ -12,7 +12,7 @@ void addAtBeginning(Node** head, double v) {
 	*head = newNode;
 }
 
-void addAtEndt1(Node** head, double v,double *miu) {
+void addAtEnd(Node** head, double v,double *miu) {
     if (*head == NULL) 
         addAtBeginning(&*head, v);
     else 
@@ -50,3 +50,16 @@ double trunchiere(double x)
 {
     return ((long long)(x*1000.0)/1000.0);
 }
+
+void freeList(Node* head)
+{
+    Node* aux;
+    while(head!=NULL)
+    {
+        aux=head;
+        head=head->next;
+        free(aux);
+    }
+        
+}
+    

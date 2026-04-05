@@ -22,7 +22,7 @@ int main(int argc,const char* argv[])
     for(i=0;i<N;i++)
     {
         fscanf(fin,"%lf",&a);
-        addAtEndt1(&head,a,&miu);
+        addAtEnd(&head,a,&miu);
     }
     fclose(fin);
 
@@ -35,6 +35,7 @@ int main(int argc,const char* argv[])
         printf("Fisierul out nu a putut fi deschis\n");
         exit(1);
     }
-    fprintf(fout,"%.3lf \n%.3lf \n%.3lf\n",trunchiere(miu),trunchiere(volat),trunchiere(SR));
+    fprintf(fout,"%.3lf\n%.3lf\n%.3lf\n",trunchiere(miu),trunchiere(volat),trunchiere(SR));
     fclose(fout);
+    freeList(head);
 }
