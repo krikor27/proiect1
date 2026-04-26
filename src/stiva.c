@@ -20,20 +20,14 @@ double pop(Stiva**top)
     free(temp);
     return aux;
 }
-double top(Stiva *top)
-{
-    if (isEmptys(top)) return -9999999;
-    return top->val;
-}
-int isEmptys(Stiva*top)
+int isEmptys(const Stiva*top)
 {   
     return top==NULL;
 }
 void deleteStack(Stiva**top)
 {
-    Stiva *temp;
     while ((*top)!=NULL){ // !isEmpty(*top)
-        temp=*top;
+        Stiva *temp=*top;
         *top=(*top)->next;
         free(temp);
     }

@@ -2,45 +2,53 @@
 
 Queue *createQueue()
 {
-    Queue *q;
-    q = (Queue *)malloc(sizeof(Queue));
-    if (q == NULL)
-        return NULL;
+    Queue *q= (Queue *)malloc(sizeof(Queue));
+    if (q == NULL) {
+    printf("Nu s-a putut aloca dinamic\n");
+    exit(1);
+}
     q->front = q->rear = NULL;
     return q;
 }
-void enQueue(Queue *q, P v)
+void enQueue(Queue *q, int zi, double diferenta,const char *piata)
 {
-    P *newNode = (P *)malloc(sizeof(P));
-   // newNode->val = v;
+    O *newNode = (O *)malloc(sizeof(O));
+    if (newNode==NULL)
+    {
+        printf("Nu s-a putut aloca dinamic\n");
+        exit(1);
+    }
+    newNode->zi=zi;
+    newNode->diferenta=diferenta;
+    strcpy(newNode->piata,piata);
     newNode->next = NULL;
-    if (q->rear == NULL)
-        q->rear = newNode;
+    if (q->rear == NULL){
+        q->front = newNode;
+        q->rear=newNode;
+    }
     else
     {
         (q->rear)->next = newNode;
         (q->rear) = newNode;
     }
-    if (q->front == NULL)
-        q->front = q->rear;
 }
-/*
-P deQueue(Queue *q)
+void printq(Queue *q,FILE* fout)
 {
-    Node *aux;
-    int d;
-    if (isEmptyq(q))
-        return -999999999;
-    aux = q->front;
-    d = aux->val;
-    q->front = (q->front)->next;
-    if (q->front == NULL)
-        q->rear = NULL;
-    free(aux);
-    return d;
+    O *aux=q->front;
+    while (aux!=NULL)
+    {
+    fprintf(fout,"ziua %d - %.2lf - %s\n",aux->zi,aux->diferenta,aux->piata);
+    aux=aux->next;
+    }
 }
-*/
-int isEmptyq(Queue *q)
+void deleteq(Queue *q)
 {
-    return (q->front == NULL);
+    while (q->front!=NULL)
+    {
+        O *aux=q->front;
+        q->front=q->front->next;
+        free(aux);
+    }
+    q->rear=NULL;
+    free(q);
 }

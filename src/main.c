@@ -1,7 +1,8 @@
-#include "liste.h"
-#include "cozi.h"
-#include "stiva.h"
-
+//#include "liste.h"
+#include "task2.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 int main(int argc,const char* argv[])
 {
     if(argc<3)
@@ -10,61 +11,66 @@ int main(int argc,const char* argv[])
         exit(1);
     }
     //task 1
-    
+    /*
     int N,i;
     double a,miu=0,volat,SR;
-    FILE* fout,*fin;
+    FILE* fout1,*fin1;
     Node *head=NULL;
 
-    if((fin=fopen(argv[1],"rt"))==NULL)
+    if((fin1=fopen(argv[1],"rt"))==NULL)
     {
         printf("Fisierul in nu a putut fi deschis\n");
         exit(1);
     }
-    fscanf(fin,"%d",&N);
+    fscanf(fin1,"%d",&N);
     for(i=0;i<N;i++)
     {
-        fscanf(fin,"%lf",&a);
+        fscanf(fin1,"%lf",&a);
         addAtEnd(&head,a,&miu);
     }
-    fclose(fin);
+    fclose(fin1);
 
     miu/=(N-1);
     volat=volatilitate(head->next,N-1,miu);
     SR=miu/volat;
 
-    if((fout=fopen(argv[2],"wt"))==NULL)
+    if((fout1=fopen(argv[2],"wt"))==NULL)
     {
         printf("Fisierul out nu a putut fi deschis\n");
         exit(1);
     }
-    fprintf(fout,"%.3lf\n%.3lf\n%.3lf\n",trunchiere(miu),trunchiere(volat),trunchiere(SR));
-    fclose(fout);
+    fprintf(fout1,"%.3lf\n%.3lf\n%.3lf\n",trunchiere(miu),trunchiere(volat),trunchiere(SR));
+    fclose(fout1);
     freeList(head);
-    
+    */
     //task 2
 
-    P *o1,*o2,*o3;
+    FILE* fout2,*fin2;
+    char piata1[30],piata2[30],piata3[30];
     Stiva *stackTop1=NULL;
     Stiva *stackTop2=NULL;
     Stiva *stackTop3=NULL;
     double n;
-    if((fin=fopen(argv[1],"rt"))==NULL)
+    if((fin2=fopen(argv[1],"rt"))==NULL)
     {
         printf("Fisierul in nu a putut fi deschis\n");
         exit(1);
     }
-    fscanf(fin,"%s",o1->piata);
-    while(fscanf(fin,"%lf",&n)==1)
-        push(&stackTop1,n);
-
-    fscanf(fin,"%s",o2->piata);
-    while(fscanf(fin,"%lf",&n)==1)
-        push(&stackTop2,n);
-
-    fscanf(fin,"%s",o3->piata);
-    while(fscanf(fin,"%lf",&n)==1)
-        push(&stackTop3,n);
-    fclose(fin);
-    
+    citire(fin2,piata1,sizeof(piata1),&stackTop1);
+    citire(fin2,piata2,sizeof(piata2),&stackTop2);
+    citire(fin2,piata3,sizeof(piata3),&stackTop3);
+    fclose(fin2);
+    Queue *q=createQueue();
+    comparatie(q,&stackTop1,&stackTop2,&stackTop3,piata1,piata2,piata3);
+    if((fout2=fopen(argv[2],"wt"))==NULL)
+    {
+        printf("Fisierul out nu a putut fi deschis\n");
+        exit(1);
+    }
+    printq(q,fout2);
+    fclose(fout2);
+    deleteq(q);
+    deleteStack(&stackTop1);
+    deleteStack(&stackTop2);
+    deleteStack(&stackTop3);
 }
