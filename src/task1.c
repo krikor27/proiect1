@@ -14,7 +14,7 @@ void addAtBeginning(Node** head, double v) {
 
 void addAtEnd(Node** head, double v,double *miu) {
     if (*head == NULL) 
-        addAtBeginning(&*head, v);
+        addAtBeginning(head, v);
     else 
     {
     Node *aux = *head;
@@ -53,10 +53,9 @@ double trunchiere(double x)
 
 void freeList(Node* head)
 {
-    Node* aux;
     while(head!=NULL)
     {
-        aux=head;
+        Node* aux=head;
         head=head->next;
         free(aux);
     }

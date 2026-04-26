@@ -1,4 +1,6 @@
 #include "liste.h"
+#include "cozi.h"
+#include "stiva.h"
 
 int main(int argc,const char* argv[])
 {
@@ -7,7 +9,8 @@ int main(int argc,const char* argv[])
         printf("Trebuie introduse si fisierele input output");
         exit(1);
     }
-
+    //task 1
+    
     int N,i;
     double a,miu=0,volat,SR;
     FILE* fout,*fin;
@@ -38,4 +41,30 @@ int main(int argc,const char* argv[])
     fprintf(fout,"%.3lf\n%.3lf\n%.3lf\n",trunchiere(miu),trunchiere(volat),trunchiere(SR));
     fclose(fout);
     freeList(head);
+    
+    //task 2
+
+    P *o1,*o2,*o3;
+    Stiva *stackTop1=NULL;
+    Stiva *stackTop2=NULL;
+    Stiva *stackTop3=NULL;
+    double n;
+    if((fin=fopen(argv[1],"rt"))==NULL)
+    {
+        printf("Fisierul in nu a putut fi deschis\n");
+        exit(1);
+    }
+    fscanf(fin,"%s",o1->piata);
+    while(fscanf(fin,"%lf",&n)==1)
+        push(&stackTop1,n);
+
+    fscanf(fin,"%s",o2->piata);
+    while(fscanf(fin,"%lf",&n)==1)
+        push(&stackTop2,n);
+
+    fscanf(fin,"%s",o3->piata);
+    while(fscanf(fin,"%lf",&n)==1)
+        push(&stackTop3,n);
+    fclose(fin);
+    
 }
