@@ -1,17 +1,17 @@
-//#include "liste.h"
+#include "liste.h"
 #include "task2.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 int main(int argc,const char* argv[])
 {
-    if(argc<3)
+    if(argc<5)
     {
         printf("Trebuie introduse si fisierele input output");
         exit(1);
     }
     //task 1
-    /*
+    
     int N,i;
     double a,miu=0,volat,SR;
     FILE* fout1,*fin1;
@@ -42,7 +42,7 @@ int main(int argc,const char* argv[])
     fprintf(fout1,"%.3lf\n%.3lf\n%.3lf\n",trunchiere(miu),trunchiere(volat),trunchiere(SR));
     fclose(fout1);
     freeList(head);
-    */
+    
     //task 2
 
     FILE* fout2,*fin2;
@@ -50,8 +50,7 @@ int main(int argc,const char* argv[])
     Stiva *stackTop1=NULL;
     Stiva *stackTop2=NULL;
     Stiva *stackTop3=NULL;
-    double n;
-    if((fin2=fopen(argv[1],"rt"))==NULL)
+    if((fin2=fopen(argv[3],"rt"))==NULL)
     {
         printf("Fisierul in nu a putut fi deschis\n");
         exit(1);
@@ -62,7 +61,7 @@ int main(int argc,const char* argv[])
     fclose(fin2);
     Queue *q=createQueue();
     comparatie(q,&stackTop1,&stackTop2,&stackTop3,piata1,piata2,piata3);
-    if((fout2=fopen(argv[2],"wt"))==NULL)
+    if((fout2=fopen(argv[4],"wt"))==NULL)
     {
         printf("Fisierul out nu a putut fi deschis\n");
         exit(1);
