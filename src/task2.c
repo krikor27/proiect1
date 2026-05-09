@@ -31,3 +31,33 @@ void comparatie(Queue *q,Stiva **stackTop1,Stiva **stackTop2,Stiva **stackTop3,c
     }
     
 }
+int nrtask(FILE* fin)
+{
+    char sir[201];
+    int N;
+    double x;
+    if (fscanf(fin,"%d",&N)==1)
+    {
+        int contor=0;
+    while(fscanf(fin,"%lf",&x)==1)
+    {
+        contor++;
+    }
+    rewind(fin);
+    if (contor==N)
+    return 1;
+    else return 4;
+    }
+    rewind(fin);
+    fgets(sir,sizeof(sir),fin);
+    if (strchr(sir,','))
+    {
+        rewind(fin);
+        return 3;
+    }
+    else
+    {
+        rewind(fin);
+        return 2; 
+    } 
+}
