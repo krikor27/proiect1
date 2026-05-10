@@ -1,8 +1,10 @@
 #include "liste.h"
 #include "task2.h"
+#include "task3.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+
 int main(int argc,const char* argv[])
 {
     if(argc<3)
@@ -77,4 +79,11 @@ int main(int argc,const char* argv[])
     deleteStack(&stackTop2);
     deleteStack(&stackTop3);
 }
+    if(task==3)
+    {
+        FILE* fout;
+        char simbol[10][5];
+        TreeNode* root=construiestearbore(fin,simbol);
+        fclose(fin);
+    }
 }
