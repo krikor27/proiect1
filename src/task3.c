@@ -59,7 +59,7 @@ TreeNode* construiestearbore(FILE* fin,char simbol[10][5])
     while (citpreturi(fin,pretNou))
     {
         for (int i=0;i<10;i++)
-            if (pretNou[i]>pretVechi[i])
+            if (pretNou[i]>=pretVechi[i])
                 pozitieNod[i]=moveright(pozitieNod[i],simbol[i]);
             else 
                 pozitieNod[i]=moveleft(pozitieNod[i],simbol[i]);
@@ -67,4 +67,46 @@ TreeNode* construiestearbore(FILE* fin,char simbol[10][5])
             pretVechi[i]=pretNou[i];
     }
     return root;
+}
+int indiceSimbol(char simbol[10][5],char* cautat)
+{
+    for (int i=0;i<10;i++)
+        if(strcmp(simbol[i],cautat)==0)
+            return i;
+    return -999999;
+}
+
+void oglinda(TreeNode* st, TreeNode* dr, char simbol[10][5],int opus[10][10])
+{
+    if (st==NULL || dr==NULL) return;
+    if (st->left==NULL && st->right==NULL &&
+        dr->left==NULL && dr->right==NULL)
+        {
+            StockList* auxst=st->stocks; //lista din frunza din stanga
+
+            while(auxst!=NULL)
+            {
+                StockList* auxdr=dr->stocks;
+                while (auxdr!=NULL)
+                {
+                    int i=indiceSimbol(simbol,auxst->symbol);
+                    int j=indiceSimbol(simbol,auxdr->symbol);
+                    opus[i][j]=opus[j][i]=1;
+                    auxdr=auxdr->next;
+                }
+                auxst=auxst->next;
+            }
+            return;
+        }
+        oglinda(st->left,dr->right,simbol,opus);
+        oglinda(st->right,dr->left,simbol,opus);
+        
+}
+
+void afisperechi(FILE* fout,char simbol[10][5], int opus[10][10])
+{
+    for (int i=0;i<10;i++)
+        for (int j=i+1;j<10;j++)
+            if (opus[i][j])
+                fprintf(fout,"%s-%s\n",simbol[i],simbol[j]);
 }

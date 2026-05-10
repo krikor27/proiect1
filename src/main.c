@@ -83,7 +83,17 @@ int main(int argc,const char* argv[])
     {
         FILE* fout;
         char simbol[10][5];
+        int opus[10][10]={0};
         TreeNode* root=construiestearbore(fin,simbol);
         fclose(fin);
+        oglinda(root->left,root->right,simbol,opus);
+        if((fout=fopen(argv[2],"wt"))==NULL)
+        {
+            printf("Fisierul out nu a putut fi deschis\n");
+            exit(1);
+        }
+        afisperechi(fout,simbol,opus);
+        fclose(fout);
+        freeTree(root);
     }
 }

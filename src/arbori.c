@@ -1,5 +1,4 @@
 #include "arbori.h"
-
 TreeNode *createTreeNode(int depth)
 {
     TreeNode* node=malloc(sizeof(TreeNode));
@@ -49,5 +48,21 @@ TreeNode* moveright(TreeNode* node,char *simbol)
     addListtoNode(node->right,simbol);
     return node->right;
 }
-
+void freeStockList(StockList* head)
+{
+    while(head!=NULL)
+    {
+        StockList* aux= head;
+        head=head->next;
+        free(aux);
+    }
+}
+void freeTree(TreeNode* root)
+{
+    if (root==NULL) return;
+    freeTree(root->left);
+    freeTree(root->right);
+    freeStockList(root->stocks);
+    free(root);
+}
 

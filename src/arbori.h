@@ -20,3 +20,5 @@ TreeNode *createTreeNode(int depth);
 void addListtoNode(TreeNode* node,char *simbol);
 TreeNode* moveleft(TreeNode* node,char *simbol);
 TreeNode* moveright(TreeNode* node,char *simbol);
+void freeStockList(StockList* head);
+void freeTree(TreeNode* root);
