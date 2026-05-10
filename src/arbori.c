@@ -13,7 +13,7 @@ TreeNode *createTreeNode(int depth)
     node->depth=depth;
     return node;
 }
-void addListtoNode(TreeNode* node,char *simbol)
+void addListtoNode(TreeNode* node,const char *simbol)
 {
     StockList* newStock=malloc(sizeof(StockList));
     if (newStock==NULL)
@@ -33,7 +33,7 @@ void addListtoNode(TreeNode* node,char *simbol)
     aux=aux->next;
     aux->next=newStock;
 }
-TreeNode* moveleft(TreeNode* node,char *simbol)
+TreeNode* moveleft(TreeNode* node,const char *simbol)
 {
     if (node->left==NULL)
     node->left=createTreeNode(node->depth+1);
@@ -41,7 +41,7 @@ TreeNode* moveleft(TreeNode* node,char *simbol)
     return node->left;
 }
 
-TreeNode* moveright(TreeNode* node,char *simbol)
+TreeNode* moveright(TreeNode* node,const char *simbol)
 {
     if (node->right==NULL)
     node->right=createTreeNode(node->depth+1);

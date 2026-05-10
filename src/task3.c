@@ -68,7 +68,7 @@ TreeNode* construiestearbore(FILE* fin,char simbol[10][5])
     }
     return root;
 }
-int indiceSimbol(char simbol[10][5],char* cautat)
+int indiceSimbol(const char simbol[10][5],const char* cautat)
 {
     for (int i=0;i<10;i++)
         if(strcmp(simbol[i],cautat)==0)
@@ -103,10 +103,17 @@ void oglinda(TreeNode* st, TreeNode* dr, char simbol[10][5],int opus[10][10])
         
 }
 
-void afisperechi(FILE* fout,char simbol[10][5], int opus[10][10])
+void afisperechi(FILE* fout,const char simbol[10][5],const int opus[10][10])
 {
+    int primul=1;
     for (int i=0;i<10;i++)
         for (int j=i+1;j<10;j++)
             if (opus[i][j])
-                fprintf(fout,"%s-%s\n",simbol[i],simbol[j]);
+            {
+                if(!primul)
+                    fprintf(fout,"\n");
+                fprintf(fout,"%s-%s",simbol[i],simbol[j]);
+                primul=0;
+            }
+                
 }
