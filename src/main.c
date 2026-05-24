@@ -1,6 +1,7 @@
 #include "liste.h"
 #include "task2.h"
 #include "task3.h"
+#include "task4.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -95,5 +96,25 @@ int main(int argc,const char* argv[])
         afisperechi(fout,simbol,opus);
         fclose(fout);
         freeTree(root);
+    }
+    if (task==4)
+    {
+        FILE *fout;
+        int N,K;
+        int stare_start, stare_target;
+        double d;
+        GraphNode *graph;
+        citireT4(fin, &N, &d, &K, &stare_start, &stare_target);
+        graph=populareGraf(fin,N,d);
+        fclose(fin);
+        initializarestart(&graph,stare_start);
+        if((fout=fopen(argv[2],"wt"))==NULL)
+        {
+            printf("Fisierul out nu a putut fi deschis\n");
+            exit(1);
+        }
+        afisaret4(graph,fout,K,stare_target);
+        fclose(fout);
+
     }
 }

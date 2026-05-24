@@ -1,3 +1,4 @@
+/*
 #include <stdio.h>
 #include <stdlib.h>
 int main(int argc,const char* argv[])
@@ -7,3 +8,4 @@ int main(int argc,const char* argv[])
     fprintf(fout,"this is a demo ref file");
     fclose(fout);
 }
+    */

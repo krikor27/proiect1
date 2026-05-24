@@ -17,8 +17,8 @@ typedef struct TreeNode {
     int depth;
 } TreeNode;
 TreeNode *createTreeNode(int depth);
-void addListtoNode(TreeNode* node,char *simbol);
-TreeNode* moveleft(TreeNode* node,char *simbol);
-TreeNode* moveright(TreeNode* node,char *simbol);
+void addListtoNode(TreeNode* node,const char *simbol);
+TreeNode* moveleft(TreeNode* node,const char *simbol);
+TreeNode* moveright(TreeNode* node,const char *simbol);
 void freeStockList(StockList* head);
 void freeTree(TreeNode* root);
