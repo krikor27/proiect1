@@ -90,3 +90,23 @@ GraphNode* populareGraf(FILE* fin, int N, double d)
     }
     return graph;
 }
+void freeGraph(GraphNode* graph)
+{
+    GraphNode *auxG;
+    Edge* edge;
+    Edge *auxE;
+    while (graph!=NULL)
+    {
+        edge=graph->edges;
+        while (edge!=NULL)
+        {
+            auxE=edge;
+            edge=edge->next;
+            free(auxE);
+        }
+        auxG=graph;
+        graph=graph->next;
+        free(auxG);
+    }
+
+}

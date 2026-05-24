@@ -115,6 +115,6 @@ int main(int argc,const char* argv[])
         }
         afisaret4(graph,fout,K,stare_target);
         fclose(fout);
-
+        freeGraph(graph);
     }
 }

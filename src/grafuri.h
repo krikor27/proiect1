@@ -35,3 +35,4 @@ Edge *gasesteMuchie(Edge* edges,int to);
 GraphNode *gasesteNod(GraphNode* graph,int stare);
 void addtranzitie(GraphNode **graph,int from,int to);
 GraphNode* populareGraf(FILE* fin, int N, double d);
+void freeGraph(GraphNode* graph);
