@@ -103,10 +103,9 @@ void calculeazaMaine(GraphNode *graph)
 }
 void afisaret4(GraphNode *graph,FILE *fout, int K, int stare_target)
 {
-    Fractie probabilitate;
     for(int zi=0;zi<K;zi++)
     {
-        probabilitate=cautaProbabil(graph,stare_target);
+        Fractie probabilitate=cautaProbabil(graph,stare_target);
         afisFractie(fout,probabilitate);
         if (zi!=K-1)
         {

@@ -92,7 +92,6 @@ GraphNode* populareGraf(FILE* fin, int N, double d)
 }
 void freeGraph(GraphNode* graph)
 {
-    GraphNode *auxG;
     Edge* edge;
     Edge *auxE;
     while (graph!=NULL)
@@ -104,7 +103,7 @@ void freeGraph(GraphNode* graph)
             edge=edge->next;
             free(auxE);
         }
-        auxG=graph;
+        GraphNode *auxG=graph;
         graph=graph->next;
         free(auxG);
     }
