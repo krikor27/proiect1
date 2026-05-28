@@ -87,6 +87,7 @@ void oglinda(TreeNode* st, TreeNode* dr, char simbol[10][5],int opus[10][10])
             while(auxst!=NULL)
             {
                 StockList* auxdr=dr->stocks;
+                
                 while (auxdr!=NULL)
                 {
                     int i=indiceSimbol(simbol,auxst->symbol);

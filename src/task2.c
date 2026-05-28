@@ -50,6 +50,11 @@ int nrtask(FILE* fin)
     }
     rewind(fin);
     fgets(sir,sizeof(sir),fin);
+    if (!strncmp(sir,"BONUS",5))
+    {
+        rewind(fin);
+        return 5; 
+    } 
     if (strchr(sir,','))
     {
         rewind(fin);
@@ -60,4 +65,5 @@ int nrtask(FILE* fin)
         rewind(fin);
         return 2; 
     } 
+    
 }

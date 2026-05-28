@@ -2,6 +2,7 @@
 #include "task2.h"
 #include "task3.h"
 #include "task4.h"
+//#include "bonus.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -117,4 +118,19 @@ int main(int argc,const char* argv[])
         fclose(fout);
         freeGraph(graph);
     }
+    //task bonus
+    /* 
+    if (task==5)
+    {
+        FILE* fout;
+        if((fout=fopen(argv[2],"wt"))==NULL)
+        {
+            printf("Fisierul out nu a putut fi deschis\n");
+            exit(1);
+        }
+        bonustask(fin,fout);
+        fclose(fin);
+        fclose(fout);  
+    }
+        */
 }
